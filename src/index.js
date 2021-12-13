@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const pingRoute = require('./app/routes/pingRoute');
 const loginRoute = require('./app/routes/loginRoute');
 const groupRoute = require('./app/routes/groupRoute');
@@ -14,6 +15,7 @@ class App {
   }
 
   middlewares() {
+    this.server.use(cors())
     this.server.use(express.json());
     this.server.use(express.urlencoded({extended: true}));
   }
